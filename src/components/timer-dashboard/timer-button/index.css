@@ -6,3 +6,8 @@
   border: 2px solid;
   border-radius: 15px;
 }
+
+.TimerButton:hover {
+  opacity: 0.75;
+  cursor: pointer;
+}

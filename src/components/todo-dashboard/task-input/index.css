@@ -25,3 +25,8 @@
 
   margin-top: 10px;
 }
+
+.AddButton:hover {
+  opacity: 0.75;
+  cursor: pointer;
+}

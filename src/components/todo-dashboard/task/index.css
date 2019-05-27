@@ -12,3 +12,8 @@
   color: lightcoral;
   margin-left: 20px;
 }
+
+.TaskButton:hover {
+  opacity: 0.75;
+  cursor: pointer;
+}

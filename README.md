@@ -8,10 +8,10 @@ pomodoro auf deutsch
 - [x] Start/Pause & Reset tasks
 - [x] 25m per task, 5m rests and 15m rest every
 - [x] Support pressing "Enter" to submit input form
+- [x] Buttons change opacity on hover
 
 ### TODO
 - [ ] Show countdown on tab title
-- [ ] Buttons change opacity on hover
 - [ ] Add a title
 - [ ] Make site responsive for mobile
 - [ ] Add internationalization for DE
