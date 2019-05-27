@@ -10,10 +10,10 @@ pomodoro auf deutsch
 - [x] Support pressing "Enter" to submit input form
 - [x] Buttons change opacity on hover
 - [x] Show countdown on tab title
+- [x] Don't do hover actions on timedash buttons if button is not enabled
+- [x] If there are no tasks to do, fade button & don't show pointer cursor
 
 ### TODO
-- [ ] Don't do hover actions on timedash buttons if button is not enabled
-- [ ] If there are no tasks to do, fade button & don't show pointer cursor
 - [ ] Add tab icon
 - [ ] Add page title to top of page
 - [ ] Make site responsive for mobile

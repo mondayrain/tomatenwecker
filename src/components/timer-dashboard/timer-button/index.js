@@ -22,7 +22,7 @@ const TimerButton = ({
         borderColor: color
       }}
       onClick={onClick}
-      enabled={enabled}
+      disabled={!enabled}
     >
       {value}
     </button>

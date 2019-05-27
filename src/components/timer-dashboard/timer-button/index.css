@@ -11,3 +11,8 @@
   opacity: 0.75;
   cursor: pointer;
 }
+
+.TimerButton:disabled {
+  opacity: 0.50;
+  cursor: not-allowed;
+}

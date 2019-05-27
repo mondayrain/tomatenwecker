@@ -10,7 +10,7 @@ const DOCUMENT_TITLE = "tomatenwecker || pomodoro";
 
 const TASK_SECONDS = 1500;
 const REST_SECONDS = 300;
-const LONG_REST_SECONDS = 600;
+const LONG_REST_SECONDS = 1200;
 
 const RESTING_COPY = "Take a break!";
 const NO_TASK_COPY = "No task to do";
@@ -178,7 +178,7 @@ class Pomodoro extends React.Component {
       START: {
         value: "Start",
         onClick: this.onStartCountdown,
-        enabled: !this.state.intervalId
+        enabled: !this.state.intervalId && this.state.todos.length > 0
       },
       STOP: {
         value: "Stop",
@@ -188,12 +188,12 @@ class Pomodoro extends React.Component {
       SKIP: {
         value: "Skip",
         onClick: this.onSkipCountdown,
-        enabled: this.state.todos.length > 0
+        enabled: this.state.todos.length > 0 && !this.state.resting
       },
       RESET: {
         value: "Reset",
         onClick: this.onResetCountdown,
-        enabled: true
+        enabled: this.state.time != this.state.currentTime
       }
     };
 
