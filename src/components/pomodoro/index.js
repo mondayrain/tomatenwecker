@@ -4,9 +4,11 @@ import TimerDashboard from "../timer-dashboard";
 import TodoDashboard from "../todo-dashboard";
 
 import "./index.css";
+import { formatTime } from "../../lib/helpers";
+
+const DOCUMENT_TITLE = "tomatenwecker || pomodoro";
 
 const TASK_SECONDS = 1500;
-
 const REST_SECONDS = 300;
 const LONG_REST_SECONDS = 600;
 
@@ -25,6 +27,10 @@ class Pomodoro extends React.Component {
       currentTime: TASK_SECONDS,
       intervalId: null
     };
+  }
+
+  componentDidMount() {
+    document.title = DOCUMENT_TITLE;
   }
 
   //-- HANDLERS --
@@ -52,6 +58,8 @@ class Pomodoro extends React.Component {
   };
 
   onResetCountdown = () => {
+    document.title = DOCUMENT_TITLE;
+
     if (this.state.intervalId) {
       clearInterval(this.state.intervalId);
     }
@@ -66,6 +74,8 @@ class Pomodoro extends React.Component {
     if (!this.state.resting && this.state.todos.length === 0) {
       return;
     }
+
+    document.title = DOCUMENT_TITLE;
 
     if (this.state.intervalId) {
       clearInterval(this.state.intervalId);
@@ -117,8 +127,10 @@ class Pomodoro extends React.Component {
       this.setNextTimer();
     }
 
+    const newTime = this.state.currentTime - 1;
+    document.title = `(${formatTime(newTime)}) ${DOCUMENT_TITLE}`;
     this.setState({
-      currentTime: this.state.currentTime - 1
+      currentTime: newTime
     });
   };
 
