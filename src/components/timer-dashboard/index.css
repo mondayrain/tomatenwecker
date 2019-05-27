@@ -1,0 +1,27 @@
+.TimerDashboard {
+  height: 30vh;
+  background-color: lightcoral;
+  color: snow;
+
+  text-align: center;
+  padding: 20px;
+
+  border-radius: 20px 20px 0px 0px;
+}
+
+.Time {
+  font-size: 80px;
+  padding: 10px;
+}
+
+.TimerTask {
+  font-size: 40px;
+}
+
+.TimerButtons {
+  padding: 15px;
+}
+
+.Button {
+  padding: 5px;
+}

@@ -1,9 +1,17 @@
 # tomatenwecker
 
-pomodoro
+pomodoro auf deutsch
 
-### Features
-- [ ] Ability to add & remove tasks
-- [ ] Timer w/ name of current task & which updates tab title with time
-- [ ] Start/Pause & Reset tasks
-- [ ] 25m per task, 5m rests and 15m rest every
+### Completed features
+- [x] Timer w/ name of current task
+- [x] Ability to add & remove tasks
+- [x] Start/Pause & Reset tasks
+- [x] 25m per task, 5m rests and 15m rest every
+- [x] Support pressing "Enter" to submit input form
+
+### TODO
+- [ ] Show countdown on tab title
+- [ ] Buttons change opacity on hover
+- [ ] Add a title
+- [ ] Make site responsive for mobile
+- [ ] Add internationalization for DE

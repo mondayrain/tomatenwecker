@@ -4,25 +4,29 @@ import "./index.css";
 const DEFAULT_COLOUR = "snow";
 const DEFAULT_BACKGROUND_COLOUR = "lightcoral";
 
-const DashButton = ({
+const TimerButton = ({
   value,
   onClick,
+  enabled,
   color = DEFAULT_COLOUR,
   backgroundColor = DEFAULT_BACKGROUND_COLOUR
 }) => {
+  // TODO: Light up on hover
+  // TODO: Change of mouse on hover, it's a button!
   return (
     <button
-      className="DashButton"
+      className="TimerButton"
       style={{
         color,
         backgroundColor,
         borderColor: color
       }}
       onClick={onClick}
+      enabled={enabled}
     >
       {value}
     </button>
   );
 };
 
-export default DashButton;
+export default TimerButton;

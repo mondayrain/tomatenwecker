@@ -1,0 +1,27 @@
+.TaskInput {
+  width: 100%;
+  margin: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.Input {
+  width: 350px;
+  height: 24px;
+  font-size: 18px;
+}
+
+.AddButton {
+  color: snow;
+  background-color: lightcoral;
+
+  width: 100px;
+  height: 40px;
+
+  font-size: 14px;
+
+  border: solid 1px;
+  border-color: snow;
+
+  margin-top: 10px;
+}

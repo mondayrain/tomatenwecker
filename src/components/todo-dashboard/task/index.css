@@ -1,0 +1,14 @@
+.Task {
+  background-color: lightcoral;
+  color: snow;
+
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+
+.TaskButton {
+  border: none;
+  background-color: snow;
+  color: lightcoral;
+  margin-left: 20px;
+}
