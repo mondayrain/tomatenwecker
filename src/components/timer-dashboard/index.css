@@ -1,5 +1,6 @@
 .TimerDashboard {
-  height: 28vh;
+  flex: 4;
+
   background-color: lightcoral;
   color: snow;
 

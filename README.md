@@ -14,14 +14,19 @@ pomodoro auf deutsch
 - [x] If there are no tasks to do, fade button & don't show pointer cursor
 - [x] Add page title to top of page
 - [x] Add created-by link
-
+- [x] Make site acceptably responsive for mobile
 
 ### TODO
-- [ ] Make site responsive for mobile
 - [ ] Add internationalization for DE
 - [ ] Add favicon
-- [ ] Refactor
+- [ ] Add link to GitHub
+- [ ] Choose & add appropriate typefaces
+- [ ] Add metadata & stuff for SEO
 - [ ] Add "what is this?" link & modal
+- [ ] Add Google Analytics
+- [ ] Deploy to Zeit
+- [ ] Refactor code 'cause it's bad
+
 
 ### Nice to haves
 - [ ] Button to bring back past tasks

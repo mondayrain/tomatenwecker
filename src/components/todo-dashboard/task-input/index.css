@@ -6,7 +6,10 @@
 }
 
 .Input {
-  width: 350px;
+  width: 60%;
+  min-width: 200px;
+  max-width: 350px;
+
   height: 24px;
   font-size: 18px;
 }

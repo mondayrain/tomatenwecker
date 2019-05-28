@@ -1,9 +1,9 @@
 import React from "react";
 
+import "./index.css";
 import TimerDashboard from "../timer-dashboard";
 import TodoDashboard from "../todo-dashboard";
 
-import "./index.css";
 import { formatTime } from "../../lib/helpers";
 
 const DOCUMENT_TITLE = "tomatenwecker || pomodoro";

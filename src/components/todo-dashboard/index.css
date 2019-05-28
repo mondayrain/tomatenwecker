@@ -1,10 +1,11 @@
 .TodoDashboard {
-  height: 50vh;
+  flex: 10;
 
   color: snow;
   background-color: lightcoral;
   margin-top: 5px;
   padding-top: 5px;
+  padding-bottom: 10px;
 
   border: 2px solid;
   border-radius: 0px 0px 20px 20px;
@@ -13,5 +14,4 @@
   font-size: 18px;
 
   text-align: center;
-
 }
