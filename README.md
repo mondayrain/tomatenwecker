@@ -17,7 +17,9 @@ pomodoro auf deutsch
 - [x] Make site acceptably responsive for mobile
 
 ### TODO
+- [ ] Align past tasks list properly
 - [ ] Add internationalization for DE
+- [ ] Update "skip" to be "done" and always play break
 - [ ] Add favicon
 - [ ] Add link to GitHub
 - [ ] Choose & add appropriate typefaces
@@ -30,4 +32,5 @@ pomodoro auf deutsch
 
 ### Nice to haves
 - [ ] Button to bring back past tasks
+- [ ] Drag & drop order of tasks
 
