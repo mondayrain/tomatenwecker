@@ -12,13 +12,16 @@ pomodoro auf deutsch
 - [x] Show countdown on tab title
 - [x] Don't do hover actions on timedash buttons if button is not enabled
 - [x] If there are no tasks to do, fade button & don't show pointer cursor
+- [x] Add page title to top of page
+- [x] Add created-by link
+
 
 ### TODO
-- [ ] Add tab icon
-- [ ] Add page title to top of page
 - [ ] Make site responsive for mobile
 - [ ] Add internationalization for DE
-- [ ] Add created-by link & copyright date
+- [ ] Add favicon
+- [ ] Refactor
+- [ ] Add "what is this?" link & modal
 
 ### Nice to haves
 - [ ] Button to bring back past tasks

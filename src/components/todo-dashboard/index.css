@@ -1,12 +1,17 @@
 .TodoDashboard {
-  height: 60vh;
+  height: 50vh;
 
   color: snow;
   background-color: lightcoral;
-  margin-top: 10px;
+  margin-top: 5px;
+  padding-top: 5px;
 
+  border: 2px solid;
   border-radius: 0px 0px 20px 20px;
+  border-color: snow;
+
   font-size: 18px;
 
   text-align: center;
+
 }

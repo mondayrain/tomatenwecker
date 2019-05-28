@@ -193,7 +193,7 @@ class Pomodoro extends React.Component {
       RESET: {
         value: "Reset",
         onClick: this.onResetCountdown,
-        enabled: this.state.time != this.state.currentTime
+        enabled: this.state.time !== this.state.currentTime
       }
     };
 
