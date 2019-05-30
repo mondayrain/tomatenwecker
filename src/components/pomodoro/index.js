@@ -46,7 +46,7 @@ class Pomodoro extends React.Component {
     });
   };
 
-  onStopCountdown = () => {
+  onPauseCountdown = () => {
     if (!this.state.intervalId) {
       return;
     }
@@ -91,27 +91,28 @@ class Pomodoro extends React.Component {
     this.completeTask();
   };
 
-  onTaskAdded = taskName => {
+  onTaskAdded = list => taskName => {
+    debugger;
     if (taskName.length === 0) {
       return;
     }
 
     this.setState({
-      todos: this.state.todos.concat(taskName)
+      [list]: this.state[list].concat(taskName)
     });
   };
 
-  onTaskDeleted = taskName => {
-    const taskIndex = this.state.todos.indexOf(taskName);
+  onTaskDeleted = list => taskName => {
+    const taskIndex = this.state[list].indexOf(taskName);
 
     if (taskIndex === -1) {
       return;
     }
 
     this.setState({
-      todos: [
-        ...this.state.todos.slice(0, taskIndex),
-        ...this.state.todos.slice(taskIndex + 1)
+      [list]: [
+        ...this.state[list].slice(0, taskIndex),
+        ...this.state[list].slice(taskIndex + 1)
       ]
     });
   };
@@ -122,7 +123,7 @@ class Pomodoro extends React.Component {
     const stopTimer = this.state.currentTime === 1;
 
     if (stopTimer) {
-      this.onStopCountdown();
+      this.onPauseCountdown();
       this.completeTask();
       this.setNextTimer();
     }
@@ -180,9 +181,9 @@ class Pomodoro extends React.Component {
         onClick: this.onStartCountdown,
         enabled: !this.state.intervalId && this.state.todos.length > 0
       },
-      STOP: {
-        value: "Stop",
-        onClick: this.onStopCountdown,
+      PAUSE: {
+        value: "Pause",
+        onClick: this.onPauseCountdown,
         enabled: this.state.intervalId
       },
       SKIP: {
@@ -198,7 +199,7 @@ class Pomodoro extends React.Component {
     };
 
     const first_button = this.state.intervalId
-      ? BUTTON_MAP.STOP
+      ? BUTTON_MAP.PAUSE
       : BUTTON_MAP.START;
     const buttons = [first_button].concat([BUTTON_MAP.SKIP, BUTTON_MAP.RESET]);
 

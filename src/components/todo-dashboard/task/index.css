@@ -11,6 +11,7 @@
   background-color: snow;
   color: lightcoral;
   margin-left: 20px;
+  font-weight: bold;
 }
 
 .TaskButton:hover {

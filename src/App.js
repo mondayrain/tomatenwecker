@@ -6,21 +6,32 @@ import Pomodoro from "./components/pomodoro";
 function App() {
   return (
     <div className="App">
-      <h1 className="Title">tomatenwecker</h1>
+      <Title>tomatenwecker</Title>
       <Pomodoro />
-      <div className="Footer">
-        made with <b>&lt;3</b> by{" "}
-        <a
-          className="FooterLink"
-          href="https://larissafeng.me"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          larissa feng
-        </a>
-      </div>
+      <Footer />
     </div>
   );
 }
+
+const Title = props => <h1 className="Title">{props.children}</h1>;
+
+const FooterLink = props => (
+  <a
+    className="FooterLink"
+    href="https://larissafeng.me"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {props.children}
+  </a>
+);
+
+const Footer = () => {
+  return (
+    <div className="Footer">
+      made with <b>&lt;3</b> by <FooterLink>larissa feng</FooterLink>
+    </div>
+  );
+};
 
 export default App;

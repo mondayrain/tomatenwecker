@@ -1,16 +1,14 @@
 import React from "react";
 import "./index.css";
 
-const Task = ({ name, completed, onDelete }) => {
+const Task = ({ name, taskButtonValue, onButtonPressed }) => {
   return (
     <div className="Task">
       {name}
 
-      {!completed && (
-        <button className="TaskButton" onClick={() => onDelete(name)}>
-          X
-        </button>
-      )}
+      <button className="TaskButton" onClick={() => onButtonPressed(name)}>
+        {taskButtonValue}
+      </button>
     </div>
   );
 };

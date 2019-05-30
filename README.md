@@ -15,22 +15,22 @@ pomodoro auf deutsch
 - [x] Add page title to top of page
 - [x] Add created-by link
 - [x] Make site acceptably responsive for mobile
+- [x] Align past tasks list properly
+- [x] Button to bring back past tasks
 
 ### TODO
-- [ ] Align past tasks list properly
+- [ ] Update "Skip" to be "Next" and keep the timer running
 - [ ] Add internationalization for DE
-- [ ] Update "skip" to be "done" and always play break
 - [ ] Add favicon
 - [ ] Add link to GitHub
 - [ ] Choose & add appropriate typefaces
 - [ ] Add metadata & stuff for SEO
 - [ ] Add "what is this?" link & modal
 - [ ] Add Google Analytics
-- [ ] Deploy to Zeit
+- [ ] Deploy to GitHub Pages: https://facebook.github.io/create-react-app/docs/deployment#github-pages-https-pagesgithubcom
 - [ ] Refactor code 'cause it's bad
 
 
 ### Nice to haves
-- [ ] Button to bring back past tasks
 - [ ] Drag & drop order of tasks
 
