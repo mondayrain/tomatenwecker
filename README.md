@@ -17,9 +17,9 @@ pomodoro auf deutsch
 - [x] Make site acceptably responsive for mobile
 - [x] Align past tasks list properly
 - [x] Button to bring back past tasks
+- [x] Update "Skip" to be "Next" and keep the timer running
 
 ### TODO
-- [ ] Update "Skip" to be "Next" and keep the timer running
 - [ ] Add internationalization for DE
 - [ ] Add favicon
 - [ ] Add link to GitHub

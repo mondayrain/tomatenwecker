@@ -13,7 +13,7 @@ const REST_SECONDS = 300;
 const LONG_REST_SECONDS = 1200;
 
 const RESTING_COPY = "Take a break!";
-const NO_TASK_COPY = "No task to do";
+const NO_TASK_COPY = "No tasks";
 
 class Pomodoro extends React.Component {
   constructor(props) {
@@ -36,7 +36,7 @@ class Pomodoro extends React.Component {
   //-- HANDLERS --
   //--------------
   onStartCountdown = () => {
-    if (this.state.intervalId || this.state.todos.length === 0) {
+    if (this.state.intervalId) {
       return;
     }
 
@@ -71,28 +71,22 @@ class Pomodoro extends React.Component {
   };
 
   onSkipCountdown = () => {
-    if (!this.state.resting && this.state.todos.length === 0) {
-      return;
-    }
-
-    document.title = DOCUMENT_TITLE;
-
     if (this.state.intervalId) {
       clearInterval(this.state.intervalId);
+      this.setState({
+        intervalId: null
+      });
     }
 
-    this.setState({
-      resting: false,
-      intervalId: null,
-      time: TASK_SECONDS,
-      currentTime: TASK_SECONDS
-    });
+    if (this.state.resting) {
+      this.setNextTimer();
+      return;
+    }
 
     this.completeTask();
   };
 
   onTaskAdded = list => taskName => {
-    debugger;
     if (taskName.length === 0) {
       return;
     }
@@ -179,17 +173,19 @@ class Pomodoro extends React.Component {
       START: {
         value: "Start",
         onClick: this.onStartCountdown,
-        enabled: !this.state.intervalId && this.state.todos.length > 0
+        enabled:
+          !this.state.intervalId &&
+          (this.state.resting || this.state.todos.length > 0)
       },
       PAUSE: {
         value: "Pause",
         onClick: this.onPauseCountdown,
         enabled: this.state.intervalId
       },
-      SKIP: {
-        value: "Skip",
+      NEXT: {
+        value: this.state.resting ? "Skip" : "Next",
         onClick: this.onSkipCountdown,
-        enabled: this.state.todos.length > 0 && !this.state.resting
+        enabled: this.state.resting || this.state.todos.length > 0
       },
       RESET: {
         value: "Reset",
@@ -201,7 +197,7 @@ class Pomodoro extends React.Component {
     const first_button = this.state.intervalId
       ? BUTTON_MAP.PAUSE
       : BUTTON_MAP.START;
-    const buttons = [first_button].concat([BUTTON_MAP.SKIP, BUTTON_MAP.RESET]);
+    const buttons = [first_button].concat([BUTTON_MAP.NEXT, BUTTON_MAP.RESET]);
 
     const currentTask = this.state.resting ? RESTING_COPY : this.state.todos[0];
 
@@ -210,7 +206,7 @@ class Pomodoro extends React.Component {
         <TimerDashboard
           task={currentTask || NO_TASK_COPY}
           resting={this.state.resting}
-          seconds={this.state.currentTime}
+          seconds={currentTask ? this.state.currentTime : 0}
           buttons={buttons}
         />
 
