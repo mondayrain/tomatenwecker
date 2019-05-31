@@ -5,10 +5,12 @@ import Pomodoro from "./components/pomodoro";
 
 function App() {
   return (
-    <div className="App">
-      <Title>tomatenwecker</Title>
-      <Pomodoro />
-      <Footer />
+    <div className="AppWrapper">
+      <div className="App">
+        <Title>tomatenwecker</Title>
+        <Pomodoro />
+        <Footer />
+      </div>
     </div>
   );
 }

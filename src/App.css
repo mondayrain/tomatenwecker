@@ -1,15 +1,23 @@
 html {
   padding: 0;
   margin: 0;
+  background-color: snow;
+}
+
+.AppWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 98vh;
 }
 
 .App {
-  height: 98vh;
-
   display: flex;
   flex-direction: column;
+  flex: 1;
 
-  margin-bottom: 5px;
+  width: 75%;
+
+  margin: auto;
 }
 
 .Title {

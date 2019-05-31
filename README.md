@@ -20,6 +20,8 @@ pomodoro auf deutsch
 - [x] Update "Skip" to be "Next" and keep the timer running
 
 ### TODO
+- [ ] Refactor state callback changes into more discrete calls
+- [ ] Address state of timer when the last task is running but deleted
 - [ ] Add internationalization for DE
 - [ ] Add favicon
 - [ ] Add link to GitHub
