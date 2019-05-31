@@ -1,17 +1,22 @@
 import React from "react";
 
-import "./index.css";
+import { formatTime } from "../../lib/helpers";
+
+import {
+  returnDefaultState,
+  returnStartIntervalState,
+  returnClearIntervalState,
+  returnCompleteState,
+  returnSkipState,
+  returnResetTimerState
+} from "./index.helpers";
+
 import TimerDashboard from "../timer-dashboard";
 import TodoDashboard from "../todo-dashboard";
 
-import { formatTime } from "../../lib/helpers";
+import "./index.css";
 
 const DOCUMENT_TITLE = "tomatenwecker || pomodoro";
-
-const TASK_SECONDS = 1500;
-const REST_SECONDS = 300;
-const LONG_REST_SECONDS = 1200;
-
 const RESTING_COPY = "Take a break!";
 const NO_TASK_COPY = "No tasks";
 
@@ -19,14 +24,7 @@ class Pomodoro extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      todos: [],
-      completedTodos: [],
-      resting: false,
-      time: TASK_SECONDS,
-      currentTime: TASK_SECONDS,
-      intervalId: null
-    };
+    this.state = returnDefaultState();
   }
 
   componentDidMount() {
@@ -36,54 +34,40 @@ class Pomodoro extends React.Component {
   //-- HANDLERS --
   //--------------
   onStartCountdown = () => {
-    if (this.state.intervalId) {
-      return;
-    }
-
-    const intervalId = setInterval(this.tickTimer, 1000);
     this.setState({
-      intervalId
+      ...returnStartIntervalState(this.state, this.tickTimer)
     });
   };
 
   onPauseCountdown = () => {
-    if (!this.state.intervalId) {
-      return;
-    }
-
-    clearInterval(this.state.intervalId);
     this.setState({
-      intervalId: null
+      ...returnClearIntervalState(this.state)
     });
   };
 
   onResetCountdown = () => {
     document.title = DOCUMENT_TITLE;
 
-    if (this.state.intervalId) {
-      clearInterval(this.state.intervalId);
-    }
-
     this.setState({
-      currentTime: this.state.time,
-      intervalId: null
+      ...returnClearIntervalState(this.state),
+      ...returnResetTimerState(this.state)
     });
   };
 
   onSkipCountdown = () => {
-    if (this.state.intervalId) {
-      clearInterval(this.state.intervalId);
-      this.setState({
-        intervalId: null
-      });
-    }
+    const clearIntervalState =
+      this.state.resting || this.state.todos.length === 1
+        ? returnClearIntervalState(this.state)
+        : {};
 
-    if (this.state.resting) {
-      this.setNextTimer();
-      return;
-    }
+    const resetTimerState =
+      this.state.todos.length === 1 ? returnResetTimerState(this.state) : {};
 
-    this.completeTask();
+    this.setState({
+      ...clearIntervalState,
+      ...resetTimerState,
+      ...returnSkipState(this.state)
+    });
   };
 
   onTaskAdded = list => taskName => {
@@ -111,15 +95,20 @@ class Pomodoro extends React.Component {
     });
   };
 
-  //-- HELPERS --
-  //--------------
+  //-- LIFECYCLE HELPERS --
+  //-----------------------
   tickTimer = () => {
     const stopTimer = this.state.currentTime === 1;
 
     if (stopTimer) {
-      this.onPauseCountdown();
-      this.completeTask();
-      this.setNextTimer();
+      const clearIntervalState = this.state.resting
+        ? {}
+        : returnClearIntervalState(this.state);
+
+      this.setState({
+        ...clearIntervalState,
+        ...returnCompleteState(this.state)
+      });
     }
 
     const newTime = this.state.currentTime - 1;
@@ -127,45 +116,6 @@ class Pomodoro extends React.Component {
     this.setState({
       currentTime: newTime
     });
-  };
-
-  completeTask = () => {
-    if (!this.state.resting) {
-      const finishedTask = this.state.todos[0];
-      this.setState({
-        todos: this.state.todos.slice(1),
-        completedTodos: [finishedTask].concat(this.state.completedTodos)
-      });
-    }
-  };
-
-  setNextTimer = () => {
-    // TODO: Get rid of this intermediary seconds
-    let seconds;
-
-    if (this.state.resting) {
-      seconds = TASK_SECONDS;
-    } else {
-      seconds =
-        this.state.completedTodos.length % 4 === 0
-          ? LONG_REST_SECONDS
-          : REST_SECONDS;
-    }
-
-    const resting = !this.state.resting;
-
-    this.setState({
-      time: seconds,
-      currentTime: seconds,
-      resting
-    });
-
-    if (resting) {
-      const intervalId = setInterval(this.tickTimer, 1000);
-      this.setState({
-        intervalId
-      });
-    }
   };
 
   render() {
@@ -197,6 +147,7 @@ class Pomodoro extends React.Component {
     const first_button = this.state.intervalId
       ? BUTTON_MAP.PAUSE
       : BUTTON_MAP.START;
+
     const buttons = [first_button].concat([BUTTON_MAP.NEXT, BUTTON_MAP.RESET]);
 
     const currentTask = this.state.resting ? RESTING_COPY : this.state.todos[0];
