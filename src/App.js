@@ -3,7 +3,7 @@ import "./App.css";
 
 import Pomodoro from "./components/pomodoro";
 
-function App() {
+export default function App() {
   return (
     <div className="AppWrapper">
       <div className="App">
@@ -35,5 +35,3 @@ const Footer = () => {
     </div>
   );
 };
-
-export default App;

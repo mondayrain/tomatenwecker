@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 
-const ADD_TASK_COPY = "Add a task";
+import { ADD_TASK_COPY } from "../../../lib/copy";
 
 class TaskInput extends React.Component {
   constructor(props) {

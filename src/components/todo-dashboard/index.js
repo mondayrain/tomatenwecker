@@ -1,13 +1,15 @@
 import React from "react";
 import "./index.css";
 
+import {
+  TASKS_TODO_TITLE,
+  TASKS_COMPLETED_TITLE,
+  NO_TASKS_TODO_COPY
+} from "../../lib/copy";
+
 import Task from "./task";
 import TaskInput from "./task-input";
 import TaskList from "./task-list";
-
-const TASKS_TODO_TITLE = "Tasks To Do";
-const TASKS_COMPLETED_TITLE = "Previous Tasks";
-const NO_TASKS_TODO_COPY = "No tasks to do. Add one!";
 
 const TodoDashboard = ({
   todos,

@@ -11,14 +11,16 @@ import {
   returnResetTimerState
 } from "./index.helpers";
 
+import {
+  DOCUMENT_TITLE,
+  TIMER_NO_TASK_COPY,
+  TIMER_RESTING_COPY
+} from "../../lib/copy";
+
 import TimerDashboard from "../timer-dashboard";
 import TodoDashboard from "../todo-dashboard";
 
 import "./index.css";
-
-const DOCUMENT_TITLE = "tomatenwecker || pomodoro";
-const RESTING_COPY = "Take a break!";
-const NO_TASK_COPY = "No tasks";
 
 class Pomodoro extends React.Component {
   constructor(props) {
@@ -150,12 +152,14 @@ class Pomodoro extends React.Component {
 
     const buttons = [first_button].concat([BUTTON_MAP.NEXT, BUTTON_MAP.RESET]);
 
-    const currentTask = this.state.resting ? RESTING_COPY : this.state.todos[0];
+    const currentTask = this.state.resting
+      ? TIMER_RESTING_COPY
+      : this.state.todos[0];
 
     return (
       <div className="Pomodoro">
         <TimerDashboard
-          task={currentTask || NO_TASK_COPY}
+          task={currentTask || TIMER_NO_TASK_COPY}
           resting={this.state.resting}
           seconds={currentTask ? this.state.currentTime : 0}
           buttons={buttons}
